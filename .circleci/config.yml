@@ -7,7 +7,15 @@ jobs:
       TZ: "/usr/share/zoneinfo/America/Chicago"
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - my-jekyll-build-bundle-{{ checksum "Gemfile.lock" }}
+            - my-jekyll-build-bundle-
       - run: ./script/bootstrap
+      - save_cache:
+          key: my-jekyll-build-bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
       - run: ./script/cibuild
 workflows:
   version: 2
