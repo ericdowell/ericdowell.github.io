@@ -3,12 +3,30 @@ jobs:
   test:
     docker:
       - image: circleci/ruby:2.5
-    environment:
-      TZ: "/usr/share/zoneinfo/America/Chicago"
     steps:
       - checkout
-      - run: ./script/bootstrap
-      - run: ./script/cibuild
+      - restore_cache:
+          keys:
+            - jekyll-build-bundle-{{ checksum "Gemfile.lock" }}-vendor-bundle
+      - run:
+          name: Bundle Install
+          command: bundle check --path ./vendor/bundle || bundle install --path ./vendor/bundle
+      - save_cache:
+          key: jekyll-build-bundle-{{ checksum "Gemfile.lock" }}-vendor-bundle
+          paths:
+            - vendor/bundle
+      - run:
+          name: Build Site
+          command: ./script/build
+      - run:
+          name: Test that the site was built correctly
+          command: |
+            if test -e "./_site/index.html";then
+              echo "It builds!"
+            else
+              echo "Huh. That's odd. The example site doesn't seem to build."
+              exit 1
+            fi
 workflows:
   version: 2
   test_jekyll_build:
