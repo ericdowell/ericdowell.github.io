@@ -3,7 +3,7 @@
 
 ## Folders
 .idea/
-.jekyll-metadata
+.jekyll-metadata/
 node_modules/
 .sass-cache/
-_site
+_site/
