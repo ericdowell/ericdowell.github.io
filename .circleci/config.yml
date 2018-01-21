@@ -3,18 +3,16 @@ jobs:
   test:
     docker:
       - image: circleci/ruby:2.5
-        environment:
-          - RUBY_VERSION=`ruby -v`
     steps:
       - checkout
       - restore_cache:
           keys:
-            - jekyll-build-bundle-{{ checksum "Gemfile.lock" }}-vendor-bundle-{{ .Environment.RUBY_VERSION }}
+            - jekyll-build-bundle-{{ checksum "Gemfile.lock" }}-vendor-bundle-ruby-2.5
       - run:
           name: Bundle Install
           command: bundle check --path ./vendor/bundle || bundle install --path ./vendor/bundle
       - save_cache:
-          key: jekyll-build-bundle-{{ checksum "Gemfile.lock" }}-vendor-bundle-{{ .Environment.RUBY_VERSION }}
+          key: jekyll-build-bundle-{{ checksum "Gemfile.lock" }}-vendor-bundle-ruby-2.5
           paths:
             - vendor/bundle
       - run:
