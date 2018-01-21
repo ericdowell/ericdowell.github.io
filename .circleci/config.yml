@@ -11,12 +11,16 @@ jobs:
           keys:
             - my-jekyll-build-bundle-{{ checksum "Gemfile.lock" }}
             - my-jekyll-build-bundle-
-      - run: ./script/bootstrap
+      - run:
+          name: Bundle Install
+          command: ./script/bootstrap
       - save_cache:
           key: my-jekyll-build-bundle-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-      - run: ./script/cibuild
+      - run:
+          name: Build and test
+          command: ./script/cibuild
 workflows:
   version: 2
   test_jekyll_build:
