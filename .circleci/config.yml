@@ -15,7 +15,6 @@ jobs:
           key: jekyll-build-bundle-{{ checksum "Gemfile.lock" }}-vendor-bundle
           paths:
             - vendor/bundle
-      - run: bundle show colorator
       - run:
           name: Build Site
           command: ./script/build
