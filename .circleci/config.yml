@@ -5,19 +5,17 @@ jobs:
       - image: circleci/ruby:2.5
     steps:
       - checkout
-      - run:
-          name: Setup bundle config
-          command: mkdir -p .bundle && cp .circleci/bundle-config .bundle/config
       - restore_cache:
           keys:
-            - my-jekyll-build-bundle-{{ checksum "Gemfile.lock" }}-vendor-bundle
+            - jekyll-build-bundle-{{ checksum "Gemfile.lock" }}-vendor-bundle
       - run:
           name: Bundle Install
-          command: ./script/bootstrap
+          command: bundle check --path ./vendor/bundle || bundle install --path ./vendor/bundle
       - save_cache:
-          key: my-jekyll-build-bundle-{{ checksum "Gemfile.lock" }}-vendor-bundle
+          key: jekyll-build-bundle-{{ checksum "Gemfile.lock" }}-vendor-bundle
           paths:
             - vendor/bundle
+      - run: bundle show colorator
       - run:
           name: Build Site
           command: ./script/build

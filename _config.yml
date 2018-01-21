@@ -13,8 +13,11 @@ twitter:
   username: ericdowell
 
 exclude:
+ - .circleci
+ - .idea
+ - .gitattributes
+ - .gitignore
  - Gemfile
  - Gemfile.lock
  - node_modules
- - .idea
- - .circleci
+ - vendor
