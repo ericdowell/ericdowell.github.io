@@ -1,1 +1,19 @@
 theme: jekyll-theme-minimal
+
+title: Eric Dowell Web Developer, Software Engineer, Nerd, Minneapolis, Minnesota, Twin Cities
+email: hi@ericdowell.com
+description: >- # this means to ignore newlines until "baseurl:"
+  Eric is a hard working individual that loves technology in all aspects.
+  Web development is something that brings his love of technology and coding together.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://ericdowell.com/" # the base hostname & protocol for your site, e.g. http://example.com
+google_analytics: UA-37169154-1
+
+twitter:
+  username: ericdowell
+
+exclude:
+ - Gemfile
+ - Gemfile.lock
+ - node_modules
+ - .idea
