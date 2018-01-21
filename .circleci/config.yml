@@ -10,7 +10,6 @@ jobs:
       - restore_cache:
           keys:
             - my-jekyll-build-bundle-{{ checksum "Gemfile.lock" }}
-            - my-jekyll-build-bundle-
       - run:
           name: Bundle Install
           command: ./script/bootstrap
@@ -18,7 +17,7 @@ jobs:
       - save_cache:
           key: my-jekyll-build-bundle-{{ checksum "Gemfile.lock" }}
           paths:
-            - vendor/bundle
+            - /usr/local/bundle/gems/
       - run:
           name: Build and test
           command: ./script/cibuild
