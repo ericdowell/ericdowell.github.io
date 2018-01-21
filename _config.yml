@@ -17,3 +17,4 @@ exclude:
  - Gemfile.lock
  - node_modules
  - .idea
+ - .circleci

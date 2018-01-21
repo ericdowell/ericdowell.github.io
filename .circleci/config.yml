@@ -1,0 +1,16 @@
+version: 2
+jobs:
+  test:
+    docker:
+      - image: circleci/ruby:2.5
+    environment:
+      TZ: "/usr/share/zoneinfo/America/Chicago"
+    steps:
+      - checkout
+      - run: ./script/bootstrap
+      - run: ./script/cibuild
+workflows:
+  version: 2
+  test_jekyll_build:
+    jobs:
+      - test
