@@ -13,7 +13,6 @@ jobs:
       - run:
           name: Bundle Install
           command: ./script/bootstrap
-      - run: bundle show colorator
       - save_cache:
           key: my-jekyll-build-bundle-{{ checksum "Gemfile.lock" }}-usr-local-bundle-gems
           paths:
