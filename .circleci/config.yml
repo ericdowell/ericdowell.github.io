@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: circleci/ruby:2.5
         environment:
-          RUBY_VERSION: `ruby -v`
+          - RUBY_VERSION=`ruby -v`
     steps:
       - checkout
       - restore_cache:
