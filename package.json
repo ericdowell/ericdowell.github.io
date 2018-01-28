@@ -1,0 +1,31 @@
+{
+  "name": "ericdowell.github.io",
+  "version": "1.0.0",
+  "description": "My personal website.",
+  "scripts": {
+    "bootstrap": "cp -R ./node_modules/bootstrap/scss/* ./_sass/bootstrap/ && cp ./node_modules/bootstrap/dist/js/bootstrap.min.js* ./assets/js/",
+    "popper": "cp ./node_modules/popper.js/dist/popper.min.js* ./assets/js/",
+    "jquery": "cp ./node_modules/jquery/dist/jquery.slim.min.js* ./assets/js/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ericdowell/ericdowell.github.io.git"
+  },
+  "keywords": [
+    "personal",
+    "website"
+  ],
+  "author": {
+    "name": "Eric Dowell",
+    "email": "hi@ericdowell.com",
+    "url": "https://ericdowell.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/ericdowell/ericdowell.github.io#readme",
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "jquery": "^3.2.1",
+    "popper.js": "^1.12.9"
+  }
+}
