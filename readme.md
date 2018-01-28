@@ -1,5 +1,5 @@
 # Eric Dowell Personal Site
-[![CircleCI](https://circleci.com/gh/ericdowell/ericdowell.github.io.svg?style=svg)](https://circleci.com/gh/ericdowell/ericdowell.github.io)
+Build: [![CircleCI](https://circleci.com/gh/ericdowell/ericdowell.github.io.svg?style=svg)](https://circleci.com/gh/ericdowell/ericdowell.github.io)
 
 This is my personal website, it is generated with [Jekyll](https://jekyllrb.com/) and
 the build process is tested via [CircleCI](https://circleci.com/). It's hosted via
