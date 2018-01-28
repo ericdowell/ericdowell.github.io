@@ -10,12 +10,12 @@ const sassConfig = {
     destination: './_sass/bootstrap/'
 }, jsConfig = {
     destination: './assets/js/',
+    file: 'scripts.min.js',
     source: [
         './node_modules/popper.js/dist/umd/popper.js',
         './node_modules/jquery/dist/jquery.slim.js',
         './node_modules/bootstrap/dist/js/bootstrap.js'
-    ],
-    output: 'scripts.min.js'
+    ]
 };
 
 gulp.task('sass', () => {
@@ -26,7 +26,7 @@ gulp.task('sass', () => {
 gulp.task('js', () => {
     return gulp.src(jsConfig.source)
       .pipe(sourcemaps.init())
-      .pipe(concat(jsConfig.output))
+      .pipe(concat(jsConfig.file))
       .pipe(uglify())
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(jsConfig.destination));
