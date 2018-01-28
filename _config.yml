@@ -12,6 +12,9 @@ google_analytics: UA-37169154-1
 twitter:
   username: ericdowell
 
+sass:
+  style: compressed
+
 exclude:
  - .circleci
  - .idea
