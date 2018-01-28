@@ -2,9 +2,22 @@ version: 2
 jobs:
   test:
     docker:
-      - image: circleci/ruby:2.5
+      - image: circleci/ruby:2.5-node
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - jekyll-build-npm-{{ checksum "package-lock.json" }}
+      - run:
+          name: Run Npm Install
+          command: npm install
+      - save_cache:
+          key: jekyll-build-npm-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Run Npm Build Script
+          command: npm run build
       - restore_cache:
           keys:
             - jekyll-build-bundle-{{ checksum "Gemfile.lock" }}-vendor-bundle-ruby-2.5
