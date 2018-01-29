@@ -7,7 +7,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Web development is something that brings his love of technology and coding together.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://ericdowell.com" # the base hostname & protocol for your site, e.g. http://example.com
-google_analytics: UA-37169154-1
+google_analytics: UA-37169154-3
 
 linked_in:
   username: dowell
