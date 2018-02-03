@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  test:
+  build:
     docker:
       - image: circleci/ruby:2.5-node
     steps:
@@ -40,8 +40,3 @@ jobs:
               echo "Huh. That's odd. The site doesn't seem to build."
               exit 1
             fi
-workflows:
-  version: 2
-  test_jekyll_build:
-    jobs:
-      - test
