@@ -11,13 +11,13 @@ const sassConfig = {
     source: './node_modules/bootstrap/scss/**/**/*',
     destination: './_sass/bootstrap/'
 }, jsConfig = {
-    destination: './assets/js/',
     file: 'scripts.min.js',
     source: [
         './node_modules/popper.js/dist/umd/popper.js',
         './node_modules/jquery/dist/jquery.slim.js',
         './node_modules/bootstrap/dist/js/bootstrap.js'
-    ]
+    ],
+    destination: './assets/js/'
 }, isProd = (process.env.NODE_ENV === 'prod' || process.env.NODE_ENV === 'production');
 
 gulp.task('copy-sass', () => {
