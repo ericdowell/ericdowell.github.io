@@ -17,7 +17,7 @@ jobs:
             - node_modules
       - run:
           name: Run Npm Build Script
-          command: npm run build
+          command: npm test
       - restore_cache:
           keys:
             - jekyll-build-bundle-{{ checksum "Gemfile.lock" }}-vendor-bundle-ruby-2.5
