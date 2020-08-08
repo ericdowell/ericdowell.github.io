@@ -1,37 +1,42 @@
-'use strict';
-
 import gulp from 'gulp';
 import beautify from 'gulp-beautify';
 import concat from 'gulp-concat';
 import gulpif from 'gulp-if';
-import sourcemaps from 'gulp-sourcemaps';
 import uglify from 'gulp-uglify';
+import del from 'del';
 
-const sassConfig = {
-    source: './node_modules/bootstrap/scss/**/**/*',
-    destination: './_sass/bootstrap/'
-}, jsConfig = {
-    file: 'scripts.min.js',
-    source: [
-        './node_modules/popper.js/dist/umd/popper.js',
-        './node_modules/jquery/dist/jquery.slim.js',
-        './node_modules/bootstrap/dist/js/bootstrap.js'
-    ],
-    destination: './assets/js/'
-}, isProd = (process.env.NODE_ENV === 'prod' || process.env.NODE_ENV === 'production');
+const paths = {
+    sass: {
+        source: './node_modules/bootstrap/scss/**/**/*',
+        destination: './_sass/bootstrap/'
+    },
+    js: {
+        file: 'scripts.min.js',
+        source: [
+            './node_modules/popper.js/dist/umd/popper.js',
+            './node_modules/jquery/dist/jquery.slim.js',
+            './node_modules/bootstrap/dist/js/bootstrap.js'
+        ],
+        destination: './assets/js/'
+    }
+}
 
-gulp.task('copy-sass', () => {
-    return gulp.src(sassConfig.source)
-      .pipe(gulp.dest(sassConfig.destination));
-});
+const isProd = (process.env.NODE_ENV === 'prod' || process.env.NODE_ENV === 'production')
 
-gulp.task('js', () => {
-    return gulp.src(jsConfig.source)
-      .pipe(sourcemaps.init())
-      .pipe(concat(jsConfig.file))
+export const clean = () => del([ paths.sass.destination, paths.js.destination ]);
+
+export function copySass() {
+    return gulp.src(paths.sass.source)
+      .pipe(gulp.dest(paths.sass.destination))
+}
+
+export function js() {
+    return gulp.src(paths.js.source, { sourcemaps: true })
+      .pipe(concat(paths.js.file))
       .pipe(gulpif(isProd, uglify(), beautify()))
-      .pipe(sourcemaps.write('.'))
-      .pipe(gulp.dest(jsConfig.destination));
-});
+      .pipe(gulp.dest(paths.js.destination, { sourcemaps: '.' }))
+}
 
-gulp.task('default', ['js', 'copy-sass']);
+const build = gulp.series(clean, gulp.parallel(js, copySass))
+
+export default build

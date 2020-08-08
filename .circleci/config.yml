@@ -2,27 +2,27 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.5-node
+      - image: circleci/ruby:2.6-node
     steps:
       - checkout
       - restore_cache:
           keys:
             - jekyll-build-npm-{{ checksum "package-lock.json" }}
       - run:
-          name: Run Npm Install
+          name: Run npm install
           command: npm install
       - save_cache:
           key: jekyll-build-npm-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
       - run:
-          name: Run Npm Build Script
+          name: Run npm build Script
           command: npm test
       - restore_cache:
           keys:
             - jekyll-build-bundle-{{ checksum "Gemfile.lock" }}-vendor-bundle-ruby-2.5
       - run:
-          name: Bundle Install
+          name: Run bundle install
           command: bundle check --path ./vendor/bundle || bundle install --path ./vendor/bundle
       - save_cache:
           key: jekyll-build-bundle-{{ checksum "Gemfile.lock" }}-vendor-bundle-ruby-2.5
@@ -32,7 +32,7 @@ jobs:
           name: Build Site
           command: ./script/build
       - run:
-          name: Test that the site was built correctly
+          name: Test site build
           command: |
             if test -e "./_site/index.html";then
               echo "It builds!"
