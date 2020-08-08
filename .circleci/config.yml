@@ -16,9 +16,6 @@ jobs:
           paths:
             - node_modules
       - run:
-          name: Run bundle update --bundler
-          command: bundle update --bundler
-      - run:
           name: Run npm build Script
           command: npm test
       - restore_cache:
