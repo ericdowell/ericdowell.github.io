@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.7.0-node
+      - image: circleci/ruby:2.7-node
     steps:
       - checkout
       - restore_cache:
@@ -15,6 +15,9 @@ jobs:
           key: jekyll-build-npm-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
+      - run:
+          name: Run bundle update --bundler
+          command: bundle update --bundler
       - run:
           name: Run npm build Script
           command: npm test
