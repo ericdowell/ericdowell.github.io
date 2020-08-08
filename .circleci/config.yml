@@ -22,8 +22,11 @@ jobs:
           keys:
             - jekyll-build-bundle-{{ checksum "Gemfile.lock" }}-vendor-bundle-ruby-2.5
       - run:
+          name: Set bundler path
+          command: bundle config set path "${PWD}/vendor/bundle"
+      - run:
           name: Run bundle install
-          command: bundle check --path ./vendor/bundle || bundle install --path ./vendor/bundle
+          command: bundle check || bundle install
       - save_cache:
           key: jekyll-build-bundle-{{ checksum "Gemfile.lock" }}-vendor-bundle-ruby-2.5
           paths:
