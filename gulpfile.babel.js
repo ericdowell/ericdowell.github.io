@@ -34,7 +34,7 @@ export function js() {
     return gulp.src(paths.js.source, { sourcemaps: true })
       .pipe(concat(paths.js.file))
       .pipe(gulpif(isProd, uglify(), beautify()))
-      .pipe(gulp.dest(paths.js.destination))
+      .pipe(gulp.dest(paths.js.destination, { sourcemaps: '.' }))
 }
 
 const build = gulp.series(clean, gulp.parallel(js, copySass))
