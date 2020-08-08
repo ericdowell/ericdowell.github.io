@@ -1,11 +1,14 @@
+# Jekyll
+.jekyll-metadata
+.jekyll-metadata/
+_site/
+
 ## Files
 .DS_Store
 
 ## Folders
 .bundle/
 .idea/
-.jekyll-metadata/
 node_modules/
 .sass-cache/
-_site/
 vendor/

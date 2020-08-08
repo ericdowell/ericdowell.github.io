@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "My personal website.",
   "scripts": {
-    "build": "NODE_ENV=local node ./node_modules/.bin/gulp",
-    "prod": "NODE_ENV=prod node ./node_modules/.bin/gulp",
+    "start": "./script/server",
+    "build": "NODE_ENV=local gulp",
+    "prod": "NODE_ENV=prod gulp",
+    "dc:up": "docker-compose up -d",
+    "dc:down": "docker-compose down",
+    "dc:stop": "docker-compose stop",
     "test": "npm run build && npm run prod"
   },
   "repository": {
@@ -23,16 +27,17 @@
   "license": "MIT",
   "homepage": "https://github.com/ericdowell/ericdowell.github.io#readme",
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "bootstrap": "^4.0.0",
-    "gulp": "^3.9.1",
-    "gulp-beautify": "^2.0.1",
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/register": "^7.10.5",
+    "bootstrap": "^4.5.2",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-beautify": "^3.0.0",
     "gulp-concat": "^2.6.1",
-    "gulp-if": "^2.0.2",
-    "gulp-sourcemaps": "^2.6.4",
-    "gulp-uglify": "^3.0.0",
-    "jquery": "^3.3.1",
-    "popper.js": "^1.13.0"
+    "gulp-if": "^3.0.0",
+    "gulp-uglify": "^3.0.2",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1"
   }
 }
