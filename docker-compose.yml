@@ -3,7 +3,7 @@ version: "3.8"
 services:
   app:
     container_name: ericdowell
-    image: jekyll/builder:3.8
+    image: jekyll/builder:4
     command: jekyll serve --incremental
     restart: always
     ports:
