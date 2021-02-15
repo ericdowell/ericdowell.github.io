@@ -38,6 +38,7 @@
     "gulp-if": "^3.0.0",
     "gulp-uglify": "^3.0.2",
     "jquery": "^3.5.1",
-    "popper.js": "^1.16.1"
+    "popper.js": "^1.16.1",
+    "yargs": "^16.2.0"
   }
 }
